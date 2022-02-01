@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using ZooAnimal_Gurgen_.Animals;
 using ZooAnimal_Gurgen_.Cages;
-using ZooAnimal_Gurgen_.ShowInfo;
 
 namespace ZooAnimal_Gurgen_
 {
@@ -17,7 +16,6 @@ namespace ZooAnimal_Gurgen_
             LionCage lionCage = new LionCage(4, 400);
             MonkeyCage monkeyCage = new MonkeyCage(5, 50);
             List<Cage> cages = new List<Cage>() { dolphinCage, eagleCage, elephantCage, lionCage, monkeyCage };
-            
 
             Dolphin dolphin1 = new Dolphin(1, "Del1", Gender.Female, new DateTime(2020, 10, 10), dolphinCage);
             Dolphin dolphin2 = new Dolphin(1, "Del2", Gender.Female, new DateTime(2020, 10, 10), dolphinCage);
@@ -30,9 +28,7 @@ namespace ZooAnimal_Gurgen_
             Lion lion2 = new Lion(4, "Lion2", Gender.Female, new DateTime(2021, 02, 04), lionCage);
             Monkey monkey1 = new Monkey(5, "Monk1", Gender.Female, new DateTime(2019, 03, 07), monkeyCage);
             Monkey monkey2 = new Monkey(5, "Monk2", Gender.Female, new DateTime(2019, 03, 07), monkeyCage);
-
             List<Animal> animalslist = new List<Animal>() { dolphin1, dolphin2, dolphin3, eagle1, eagle2, eagle3, elephant1, lion1, lion2, monkey1, monkey2 };
-         
 
             Feeder feeder = new Feeder("Gurgen", new DateTime(2000, 10, 10), Gender.Male, animalslist, cages);
             foreach (var item in animalslist)

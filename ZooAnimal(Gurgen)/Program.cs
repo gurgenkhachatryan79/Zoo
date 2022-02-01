@@ -1,10 +1,10 @@
 ﻿using System;
 
+
 namespace ZooAnimal_Gurgen_
 {
     class Program
-    {
-
+    {       
         static void Main(string[] args)
         {
             new Reservoir().CreateCages();

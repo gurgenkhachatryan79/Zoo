@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Timers;
 using ZooAnimal_Gurgen_.Cages;
 using ZooAnimal_Gurgen_.Foods;
-using ZooAnimal_Gurgen_.Message;
+using ZooAnimal_Gurgen_.Log;
 
 namespace ZooAnimal_Gurgen_.Animals
 {
@@ -64,7 +64,7 @@ namespace ZooAnimal_Gurgen_.Animals
         public int StomachSize { get; set; }
         public int RedBorderOfDeath { get; set; }
         public bool IsLive { set; get; }
-        public MessageMeneger Message;
+        public Logger logger;
         public int StomachSpace(DateTime birthday)
         {
             if ((DateTime.Now.Year - birthday.Year) < 5)
@@ -89,7 +89,7 @@ namespace ZooAnimal_Gurgen_.Animals
             StomachSize = 0;
             RedBorderOfDeath = 0;
             IsLive = true;
-            Message = new MessageMeneger();
+            logger =Logger.CreateLogObject();
             MyCage = cage;
 
             _timerhungry.Interval = 1000;
@@ -112,8 +112,7 @@ namespace ZooAnimal_Gurgen_.Animals
                 {
                     if (item.GetType().Name == cage.animallist[0].Foods[i].GetType().Name)
                     {
-                        Console.WriteLine(item.GetType().Name + " it's my food Thank you,I will eat ");
-                        //  Message.WriteMessage(food.GetType().Name + " it's my food Thank you,I will eat ");
+                        logger.LogInformation(item.GetType().Name + " it's my food Thank you,I will eat ");
                         return true;
                     }
                 }
@@ -125,8 +124,8 @@ namespace ZooAnimal_Gurgen_.Animals
         {
             foreach (var item in cage.animallist[0].Foods)
             {
-                Console.WriteLine(item.GetType().Name);
-                //   Message.WriteMessage(item.GetType().Name);
+                //Console.WriteLine(item.GetType().Name);
+                logger.LogInformation(item.GetType().Name);
             }
             Console.WriteLine(new string('-', 30));
         }
@@ -142,10 +141,14 @@ namespace ZooAnimal_Gurgen_.Animals
 
         public void AnimalGoesToTheDoor(Cage cage)
         {
+            
             foreach (var item in cage.animallist)
             {
                 if (!item.Die() && cage.animallist != null)
-                { Console.WriteLine(item.Name + " goes to the door"); }
+                {
+                    Console.WriteLine(item.Name + " goes to the door");
+                    logger.LogInformation(item.Name + " goes to the door");                    
+                }
             }
         }
 
@@ -155,6 +158,7 @@ namespace ZooAnimal_Gurgen_.Animals
             {
                 if (!item.Die() && cage.animallist != null)
                 { Console.WriteLine(item.Name + " goes to the FoodPlate"); }
+                logger.LogInformation(item.Name + " goes to the FoodPlate");
             }
         }
 
@@ -164,6 +168,7 @@ namespace ZooAnimal_Gurgen_.Animals
             {
                 if (!item.Die() && cage.animallist != null)
                 { Console.WriteLine(item.GetType().Name + "  to leave"); }
+                logger.LogInformation(item.GetType().Name + "  to leave");
             }
         }
 
@@ -175,7 +180,7 @@ namespace ZooAnimal_Gurgen_.Animals
                 else
                 {
                     Console.WriteLine(GetType().Name + "   This is not my food ,I do not eat it, I like to eat");
-                    // Message.WriteMessage("This is not my food ,I do not eat it, I like to eat");
+                    logger.LogWarning("This is not my food ,I do not eat it, I like to eat");
                     MyLikeFoods(cage);
                 }
             }
@@ -200,9 +205,10 @@ namespace ZooAnimal_Gurgen_.Animals
 
         public bool Die()
         {
+
             if (RedBorderOfDeath < -MaxStomachSize * 0.3)
             {
-                //  Message.WriteMessage("The " + Name + " is a Dead");
+                logger.LogError("The " + name + " is a Dead");
                 IsLive = true;
             }
             else
@@ -217,7 +223,7 @@ namespace ZooAnimal_Gurgen_.Animals
                 if (StomachSize == 0)
                 {
                     RedBorderOfDeath--;
-                    // Message.WriteMessage(Name + "  completely hungry");
+                    logger.LogWarning(name + " The animal is completely hungry and may die");
                 }
                 else
                 {
