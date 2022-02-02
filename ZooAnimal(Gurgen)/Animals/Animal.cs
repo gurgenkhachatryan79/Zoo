@@ -7,6 +7,7 @@ using ZooAnimal_Gurgen_.Log;
 
 namespace ZooAnimal_Gurgen_.Animals
 {
+
     class Animal
     {
         protected int id;
@@ -89,7 +90,7 @@ namespace ZooAnimal_Gurgen_.Animals
             StomachSize = 0;
             RedBorderOfDeath = 0;
             IsLive = true;
-            logger =Logger.CreateLogObject();
+            logger = Logger.CreateLogObject();
             MyCage = cage;
 
             _timerhungry.Interval = 1000;
@@ -104,7 +105,7 @@ namespace ZooAnimal_Gurgen_.Animals
 
         public virtual void Voice() { }
 
-        bool AnimalEatFoodOrNot(Cage cage, List<Food> cagefoods)
+        AnimalStatus AnimalEatFoodOrNot(Cage cage, List<Food> cagefoods)
         {
             foreach (var item in cagefoods)
             {
@@ -113,11 +114,11 @@ namespace ZooAnimal_Gurgen_.Animals
                     if (item.GetType().Name == cage.animallist[0].Foods[i].GetType().Name)
                     {
                         logger.LogInformation(item.GetType().Name + " it's my food Thank you,I will eat ");
-                        return true;
+                        return AnimalStatus.EatTheFood;
                     }
                 }
             }
-            return false;
+            return AnimalStatus.DidnotEat;
         }
 
         void MyLikeFoods(Cage cage)
@@ -141,13 +142,12 @@ namespace ZooAnimal_Gurgen_.Animals
 
         public void AnimalGoesToTheDoor(Cage cage)
         {
-            
             foreach (var item in cage.animallist)
             {
-                if (!item.Die() && cage.animallist != null)
+                if (item.Died() != AnimalStatus.IsDied && cage.animallist != null)
                 {
                     Console.WriteLine(item.Name + " goes to the door");
-                    logger.LogInformation(item.Name + " goes to the door");                    
+                    logger.LogInformation(item.Name + " goes to the door");
                 }
             }
         }
@@ -156,7 +156,7 @@ namespace ZooAnimal_Gurgen_.Animals
         {
             foreach (var item in cage.animallist)
             {
-                if (!item.Die() && cage.animallist != null)
+                if (item.Died() != AnimalStatus.IsDied && cage.animallist != null)
                 { Console.WriteLine(item.Name + " goes to the FoodPlate"); }
                 logger.LogInformation(item.Name + " goes to the FoodPlate");
             }
@@ -166,7 +166,7 @@ namespace ZooAnimal_Gurgen_.Animals
         {
             foreach (var item in cage.animallist)
             {
-                if (!item.Die() && cage.animallist != null)
+                if (item.Died() != AnimalStatus.IsDied && cage.animallist != null)
                 { Console.WriteLine(item.GetType().Name + "  to leave"); }
                 logger.LogInformation(item.GetType().Name + "  to leave");
             }
@@ -174,7 +174,7 @@ namespace ZooAnimal_Gurgen_.Animals
 
         public virtual void CanEat(Cage cage)
         {
-            if (!AnimalEatFoodOrNot(cage, cage._FoodPlate.Foods))
+            if (AnimalEatFoodOrNot(cage, cage._FoodPlate.Foods) == AnimalStatus.DidnotEat)
             {
                 if (cage.IsEmpty) { Console.WriteLine("cage is empty"); }
                 else
@@ -203,22 +203,22 @@ namespace ZooAnimal_Gurgen_.Animals
             }
         }
 
-        public bool Die()
+        public AnimalStatus Died()
         {
-
             if (RedBorderOfDeath < -MaxStomachSize * 0.3)
             {
                 logger.LogError("The " + name + " is a Dead");
-                IsLive = true;
+                IsLive = false;
+                return AnimalStatus.IsDied;
             }
             else
-            { IsLive = false; }
-            return IsLive;
+            { IsLive = true; }
+            return AnimalStatus.Isalive;
         }
 
         public void QuenchHunger()
         {
-            if (Die() == false)
+            if (Died() == AnimalStatus.Isalive)
             {
                 if (StomachSize == 0)
                 {
