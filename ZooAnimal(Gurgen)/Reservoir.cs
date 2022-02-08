@@ -17,9 +17,9 @@ namespace ZooAnimal_Gurgen_
             MonkeyCage monkeyCage = new MonkeyCage(5, 50);
             List<Cage> cages = new List<Cage>() { dolphinCage, eagleCage, elephantCage, lionCage, monkeyCage };
 
-            Dolphin dolphin1 = new Dolphin(1, "Del1", Gender.Female, new DateTime(2020, 10, 10), dolphinCage);
+            Dolphin dolphin1 = new Dolphin(-1, "Del1", Gender.Female, new DateTime(2020, 10, 10), dolphinCage);
             Dolphin dolphin2 = new Dolphin(1, "Del2", Gender.Female, new DateTime(2020, 10, 10), dolphinCage);
-            Dolphin dolphin3 = new Dolphin(1, "Del3", Gender.Male, new DateTime(2020, 10, 10), dolphinCage);
+            Dolphin dolphin3 = new Dolphin(-1, "Del3", Gender.Male, new DateTime(2020, 10, 10), dolphinCage);
             Eagle eagle1 = new Eagle(2, "Eag1", Gender.Male, new DateTime(2010, 07, 10), eagleCage);
             Eagle eagle2 = new Eagle(2, "Eag2", Gender.Female, new DateTime(2010, 07, 10), eagleCage);
             Eagle eagle3 = new Eagle(2, "Eag3", Gender.Male, new DateTime(2010, 07, 10), eagleCage);
@@ -30,7 +30,8 @@ namespace ZooAnimal_Gurgen_
             Monkey monkey2 = new Monkey(5, "Monk2", Gender.Female, new DateTime(2019, 03, 07), monkeyCage);
             List<Animal> animalslist = new List<Animal>() { dolphin1, dolphin2, dolphin3, eagle1, eagle2, eagle3, elephant1, lion1, lion2, monkey1, monkey2 };
 
-            Feeder feeder = new Feeder("Gurgen", new DateTime(2000, 10, 10), Gender.Male, animalslist, cages);
+            Feeder feeder = new Feeder("Gurgen", 50, Gender.Male, animalslist, cages);
+          
             foreach (var item in animalslist)
             {
                 feeder.PutAnimalCage(item);

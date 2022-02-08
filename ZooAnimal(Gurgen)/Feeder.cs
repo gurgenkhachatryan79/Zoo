@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Timers;
+using ZooAnimal_Gurgen_.Attributes;
 using ZooAnimal_Gurgen_.Animals;
 using ZooAnimal_Gurgen_.Cages;
 using ZooAnimal_Gurgen_.Foods;
 using ZooAnimal_Gurgen_.ShowInfo;
+using System.Linq;
 
 namespace ZooAnimal_Gurgen_
 {
+   [Validation(30)]
     class Feeder
     {
         string _name;
-        DateTime _birthday;
         List<Animal> _animals;
         List<Cage> _cages;
         Timer _timerfeeding { get; set; } = new Timer();
@@ -29,22 +31,18 @@ namespace ZooAnimal_Gurgen_
             get { return _name; }
         }
         public Gender _Gender { set; get; }
-        public DateTime Birthday
-        {
-            set
-            {
-                if ((value > DateTime.Now) && value.Year < (DateTime.Now.Year - 100))
-                    Console.WriteLine("invalid birthday");
-                else { _birthday = value; }
-            }
-            get { return _birthday; }
-        }
+        public int Age { set; get; }
 
         public Feeder() { }
-        public Feeder(string name, DateTime birthday, Gender gender, List<Animal> animals, List<Cage> cages)
+        public Feeder(string name,int age, Gender gender, List<Animal> animals, List<Cage> cages)
         {
             _name = name;
-            _birthday = birthday;
+            if (new AgeValidation().Validation(age))
+            { Age = age; }
+            else
+            {
+                Age = 0;
+            }
             _Gender = gender;
             _animals = animals;
             _cages = cages;
@@ -162,5 +160,7 @@ namespace ZooAnimal_Gurgen_
             }
             return lresult;
         }
+
+       
     }
 }

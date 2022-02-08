@@ -4,18 +4,19 @@ using System.Timers;
 using ZooAnimal_Gurgen_.Cages;
 using ZooAnimal_Gurgen_.Foods;
 using ZooAnimal_Gurgen_.Log;
+using ZooAnimal_Gurgen_.Attributes;
 
 namespace ZooAnimal_Gurgen_.Animals
 {
-
+    [Validation(0,Id =0)]
     class Animal
     {
-        protected int id;
+      //  protected int id;
         protected string name;
         private Timer _timerhungry { get; set; } = new Timer();
         protected DateTime birthday;
         protected int maxStomachSize;
-        public int Id
+      /*  public int Id
         {
             set
             {
@@ -27,7 +28,8 @@ namespace ZooAnimal_Gurgen_.Animals
             }
 
             get { return id; }
-        }
+        }*/
+        public int Id { get; set; }
         public string Name
         {
             set
@@ -81,7 +83,12 @@ namespace ZooAnimal_Gurgen_.Animals
         public Animal() { }
         public Animal(int id, string name, Gender gender, DateTime birthday, Cage cage)
         {
-            Id = id;
+            if (new IdValidation().Validation(id))
+            {
+                Id = id;
+            }
+            else { Id = 0; }
+           
             Name = name;
             _Gender = gender;
             Birthday = birthday;

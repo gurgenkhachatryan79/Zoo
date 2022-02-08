@@ -15,7 +15,7 @@ namespace ZooAnimal_Gurgen_.Log
         private static Logger instance;
         private static object syncRoot = new Object();
         private DateTime InitialDateTime = new DateTime(2022, 02, 01, 22, 00, 10);
-        private Logger() { }
+       // private Logger() { }
         public static Logger CreateLogObject()
         {
             if (instance == null)

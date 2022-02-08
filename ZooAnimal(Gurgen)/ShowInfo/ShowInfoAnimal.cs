@@ -10,7 +10,7 @@ namespace ZooAnimal_Gurgen_.ShowInfo
         {
             Console.WriteLine(DateTime.Now);
             Console.WriteLine("Type=" + animal.Name + "\nMaxStomachSize=" + animal.MaxStomachSize + "\nStomachSize=" + animal.StomachSize);
-            Console.WriteLine("RedBorderOfDeat=" + animal.RedBorderOfDeath);
+            Console.WriteLine("RedBorderOfDeat=" + animal.RedBorderOfDeath+"\nid="+animal.Id);
             Console.WriteLine(new string('-', 30));
         }
     }
