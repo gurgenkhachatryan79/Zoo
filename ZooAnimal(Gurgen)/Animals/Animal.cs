@@ -77,8 +77,8 @@ namespace ZooAnimal_Gurgen_.Animals
         }
         public Cage MyCage { set; get; }
 
-        public delegate void Deleg(Cage cage);
-        public event Deleg EatEvent;
+        //public delegate void Deleg(Cage cage);
+        public event EventHandler<AnimalEventArgs> EatEvent;
 
         public Animal() { }
         public Animal(int id, string name, Gender gender, DateTime birthday, Cage cage)
@@ -97,7 +97,7 @@ namespace ZooAnimal_Gurgen_.Animals
             StomachSize = 0;
             RedBorderOfDeath = 0;
             IsLive = true;
-            logger = Logger.CreateLogObject();
+            logger =  Logger.CreateLogObject();
             MyCage = cage;
 
             _timerhungry.Interval = 1000;
@@ -120,7 +120,7 @@ namespace ZooAnimal_Gurgen_.Animals
                 {
                     if (item.GetType().Name == cage.animallist[0].Foods[i].GetType().Name)
                     {
-                        logger.LogInformation(item.GetType().Name + " it's my food Thank you,I will eat ");
+                        new Logger().LogInformation(item.GetType().Name + " it's my food Thank you,I will eat ");
                         return AnimalStatus.EatTheFood;
                     }
                 }
@@ -133,78 +133,82 @@ namespace ZooAnimal_Gurgen_.Animals
             foreach (var item in cage.animallist[0].Foods)
             {
                 //Console.WriteLine(item.GetType().Name);
-                logger.LogInformation(item.GetType().Name);
+               new Logger().LogInformation(item.GetType().Name);
             }
             Console.WriteLine(new string('-', 30));
         }
 
-        public void GoesFoodPlate(Cage cage)
+        public void OnGoesFoodPlate(Cage cage)
         {
-            EatEvent = null;
             EatEvent += AnimalGoesToTheFoodPlate;
             EatEvent += CanEat;
             EatEvent += AnimalToLeave;
-            EatEvent(cage);
+            AnimalEventArgs e = new AnimalEventArgs();
+            e.cage = cage;
+            if (EatEvent != null)
+            {
+                EatEvent(this,e);
+            }          
         }
 
-        public void AnimalGoesToTheDoor(Cage cage)
+        public void AnimalGoesToTheDoor(object sender,FeederEventArgs e)
         {
-            foreach (var item in cage.animallist)
+            foreach (var item in e.cage.animallist)
             {
-                if (item.Died() != AnimalStatus.IsDied && cage.animallist != null)
+                if (item.Died() != AnimalStatus.IsDied && e.cage.animallist != null)
                 {
                     Console.WriteLine(item.Name + " goes to the door");
-                    logger.LogInformation(item.Name + " goes to the door");
+                   new Logger().LogInformation(item.Name + " goes to the door");
                 }
             }
         }
 
-        public void AnimalGoesToTheFoodPlate(Cage cage)
+        public void AnimalGoesToTheFoodPlate(object sender,AnimalEventArgs e)
         {
-            foreach (var item in cage.animallist)
+            foreach (var item in e.cage.animallist)
             {
-                if (item.Died() != AnimalStatus.IsDied && cage.animallist != null)
+                if (item.Died() != AnimalStatus.IsDied && e.cage.animallist != null)
                 { Console.WriteLine(item.Name + " goes to the FoodPlate"); }
-                logger.LogInformation(item.Name + " goes to the FoodPlate");
+                new Logger().LogInformation(item.Name + " goes to the FoodPlate");
             }
         }
 
-        public void AnimalToLeave(Cage cage)
+        public void AnimalToLeave(object sender,AnimalEventArgs e)
         {
-            foreach (var item in cage.animallist)
+            foreach (var item in e.cage.animallist)
             {
-                if (item.Died() != AnimalStatus.IsDied && cage.animallist != null)
+                if (item.Died() != AnimalStatus.IsDied && e.cage.animallist != null)
                 { Console.WriteLine(item.GetType().Name + "  to leave"); }
-                logger.LogInformation(item.GetType().Name + "  to leave");
+               new Logger().LogInformation(item.GetType().Name + "  to leave");
             }
         }
 
-        public virtual void CanEat(Cage cage)
+        public virtual void CanEat(object sender,AnimalEventArgs e)
         {
-            if (AnimalEatFoodOrNot(cage, cage._FoodPlate.Foods) == AnimalStatus.DidnotEat)
+            if (AnimalEatFoodOrNot(e.cage, e.cage._FoodPlate.Foods) == AnimalStatus.DidnotEat)
             {
-                if (cage.IsEmpty) { Console.WriteLine("cage is empty"); }
+                if (e.cage.IsEmpty) { Console.WriteLine("cage is empty"); }
                 else
                 {
                     Console.WriteLine(GetType().Name + "   This is not my food ,I do not eat it, I like to eat");
-                    logger.LogWarning("This is not my food ,I do not eat it, I like to eat");
-                    MyLikeFoods(cage);
+                   new Logger().LogWarning("This is not my food ,I do not eat it, I like to eat");
+                    MyLikeFoods(e.cage);
                 }
             }
             else
             {
-                foreach (var item in cage.animallist)
+                foreach (var item in e.cage.animallist)
                 {
-                    if ((cage._FoodPlate.FoodCount + item.StomachSize * cage.animallist.Count) >= item.MaxStomachSize * cage.animallist.Count)
+                    if ((e.cage._FoodPlate.FoodCount + item.StomachSize * e.cage.animallist.Count) >= item.MaxStomachSize * e.cage.animallist.Count)
                     {
-                        cage._FoodPlate.FoodCount = (cage._FoodPlate.FoodCount + item.StomachSize * cage.animallist.Count) - item.MaxStomachSize * cage.animallist.Count;
+                        e.cage._FoodPlate.FoodCount = (e.cage._FoodPlate.FoodCount + item.StomachSize * e.cage.animallist.Count) - item.MaxStomachSize * e.cage.animallist.Count;
                         item.StomachSize = item.MaxStomachSize;
                     }
                     else
                     {
-                        item.StomachSize += cage._FoodPlate.FoodCount;
+                        item.StomachSize += e.cage._FoodPlate.FoodCount;
                         item.RedBorderOfDeath = 0;
-                        cage._FoodPlate.FoodCount = 0;
+                        e.cage._FoodPlate.FoodCount = 0;
                     }
                 }
             }
@@ -214,7 +218,7 @@ namespace ZooAnimal_Gurgen_.Animals
         {
             if (RedBorderOfDeath < -MaxStomachSize * 0.3)
             {
-                logger.LogError("The " + name + " is a Dead");
+                new Logger().LogError("The " + name + " is a Dead");
                 IsLive = false;
                 return AnimalStatus.IsDied;
             }
@@ -230,7 +234,7 @@ namespace ZooAnimal_Gurgen_.Animals
                 if (StomachSize == 0)
                 {
                     RedBorderOfDeath--;
-                    logger.LogWarning(name + " The animal is completely hungry and may die");
+                    new Logger().LogWarning(name + " The animal is completely hungry and may die");
                 }
                 else
                 {

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Timers;
-using ZooAnimal_Gurgen_.Attributes;
 using ZooAnimal_Gurgen_.Animals;
+using ZooAnimal_Gurgen_.Attributes;
 using ZooAnimal_Gurgen_.Cages;
 using ZooAnimal_Gurgen_.Foods;
 using ZooAnimal_Gurgen_.ShowInfo;
-using System.Linq;
 
 namespace ZooAnimal_Gurgen_
 {
-   [Validation(30)]
+    [Validation(30)]
     class Feeder
     {
         string _name;
@@ -34,7 +33,7 @@ namespace ZooAnimal_Gurgen_
         public int Age { set; get; }
 
         public Feeder() { }
-        public Feeder(string name,int age, Gender gender, List<Animal> animals, List<Cage> cages)
+        public Feeder(string name, int age, Gender gender, List<Animal> animals, List<Cage> cages)
         {
             _name = name;
             if (new AgeValidation().Validation(age))
@@ -56,9 +55,8 @@ namespace ZooAnimal_Gurgen_
             _timerprint.Start();
         }
 
-        public delegate void Deleg(Cage cage);
-        public event Deleg EventGoToFeed;
-        public event Deleg EventLeaveTheCage;
+        public event EventHandler<FeederEventArgs> EventLeaveTheCage;
+        public event EventHandler<FeederEventArgs> EventGoToFeed;
 
         public void PutAnimalCage(Animal animal)
         {
@@ -75,12 +73,12 @@ namespace ZooAnimal_Gurgen_
         {
             for (int i = 0; i < 2; i++)
             {
-                GoesTheCage(_cages[i]);
+                OnGoesTheCage(_cages[i]);
                 new ShowInfoCage().PrintCage(_cages[i]);
 
-                new Animal().GoesFoodPlate(_cages[i]);
+                new Animal().OnGoesFoodPlate(_cages[i]);
 
-                LeaveTheCage(_cages[i]);
+                OnLeaveTheCage(_cages[i]);
                 new ShowInfoCage().PrintCage(_cages[i]);
 
                 new ShowInfoAnimal().PrintAnimal(_cages[i].animallist[0]);
@@ -95,52 +93,59 @@ namespace ZooAnimal_Gurgen_
             }
         }
 
-        public void LeaveTheCage(Cage cage)
+        public void OnLeaveTheCage(Cage cage)
         {
-            EventLeaveTheCage = null;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Feeder leave " + cage.GetType().Name);
             Console.ResetColor();
             EventLeaveTheCage += TurnOnLight;
             EventLeaveTheCage += OpenTheDoor;
-            EventLeaveTheCage(cage);
+            FeederEventArgs e = new FeederEventArgs();
+            e.cage = cage;
+            if (EventLeaveTheCage != null)
+            {
+                EventLeaveTheCage(this, e);
+            }
         }
 
-        public void GoesTheCage(Cage cage)
+        public void OnGoesTheCage(Cage cage)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Feeder goes " + cage.GetType().Name);
             Console.ResetColor();
-
-            EventGoToFeed = null;
             EventGoToFeed += OpenTheDoor;
             EventGoToFeed += TurnOnLight;
             EventGoToFeed += new Animal().AnimalGoesToTheDoor;
             EventGoToFeed += PutFeedCage;
-            EventGoToFeed(cage);
+            FeederEventArgs e = new FeederEventArgs();
+            e.cage = cage;
+            if (EventGoToFeed != null)
+            {
+                EventGoToFeed(this, e);
+            }
         }
 
-        public void OpenTheDoor(Cage cage)
+        public void OpenTheDoor(object sender, FeederEventArgs e)
         {
-            if (cage.IsClosed) { cage.IsClosed = false; }
-            else { cage.IsClosed = true; }
+            if (e.cage.IsClosed) { e.cage.IsClosed = false; }
+            else { e.cage.IsClosed = true; }
         }
 
-        public void TurnOnLight(Cage cage)
+        public void TurnOnLight(object sender, FeederEventArgs e)
         {
-            if (cage.IsLightOn) { cage.IsLightOn = false; }
-            else { cage.IsLightOn = true; }
+            if (e.cage.IsLightOn) { e.cage.IsLightOn = false; }
+            else { e.cage.IsLightOn = true; }
         }
 
-        public void PutFeedCage(Cage item)
+        public void PutFeedCage(object sender, FeederEventArgs e)
         {
             Console.WriteLine(new string('*', 30));
-            if (!item.IsEmpty)
+            if (!e.cage.IsEmpty)
             {
-                int lallStomachSize = CageAllAnimalStomachSize(item);
-                if (item.animallist[0].RedBorderOfDeath < 0)
+                int lallStomachSize = CageAllAnimalStomachSize(e.cage);
+                if (e.cage.animallist[0].RedBorderOfDeath < 0)
                 {
-                    PutFoodPlate(item, item.animallist[0].Foods[0], lallStomachSize);
+                    PutFoodPlate(e.cage, e.cage.animallist[0].Foods[0], lallStomachSize);
                 }
             }
         }
@@ -161,6 +166,6 @@ namespace ZooAnimal_Gurgen_
             return lresult;
         }
 
-       
+
     }
 }

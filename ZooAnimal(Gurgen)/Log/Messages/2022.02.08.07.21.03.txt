@@ -1,4 +1,0 @@
-Warning      08.02.2022 19:21:03      Monk2 The animal is completely hungry and may die
-Warning      08.02.2022 19:21:03      Del3 The animal is completely hungry and may die
-Warning      08.02.2022 19:21:03      Del2 The animal is completely hungry and may die
-Warning      08.02.2022 19:21:03      Del1 The animal is completely hungry and may die

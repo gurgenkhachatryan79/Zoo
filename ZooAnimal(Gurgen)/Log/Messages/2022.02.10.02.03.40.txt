@@ -1,0 +1,21 @@
+Warning      10.02.2022 2:03:40      Monk2 The animal is completely hungry and may die
+Warning      10.02.2022 2:03:40      Eag1 The animal is completely hungry and may die
+Warning      10.02.2022 2:03:40      Del2 The animal is completely hungry and may die
+Warning      10.02.2022 2:03:40      Del1 The animal is completely hungry and may die
+Information       10.02.2022 2:03:40      Del2 goes to the door
+Information       10.02.2022 2:03:40      Del2 goes to the FoodPlate
+Information       10.02.2022 2:03:40      Fish it's my food Thank you,I will eat 
+Information       10.02.2022 2:03:40      Dolphin  to leave
+Information       10.02.2022 2:03:40      Eag1 goes to the door
+Information       10.02.2022 2:03:40      Eag2 goes to the door
+Information       10.02.2022 2:03:40      Eag3 goes to the door
+Information       10.02.2022 2:03:40      Eag1 goes to the door
+Information       10.02.2022 2:03:40      Eag2 goes to the door
+Information       10.02.2022 2:03:40      Eag3 goes to the door
+Information       10.02.2022 2:03:40      Eag1 goes to the FoodPlate
+Information       10.02.2022 2:03:40      Eag2 goes to the FoodPlate
+Information       10.02.2022 2:03:40      Eag3 goes to the FoodPlate
+Information       10.02.2022 2:03:40      Meat it's my food Thank you,I will eat 
+Information       10.02.2022 2:03:40      Eagle  to leave
+Information       10.02.2022 2:03:40      Eagle  to leave
+Information       10.02.2022 2:03:40      Eagle  to leave
