@@ -1,0 +1,4 @@
+Warning      10.02.2022 22:56:20      Del3 The animal is completely hungry and may die
+Warning      10.02.2022 22:56:20      Eag2 The animal is completely hungry and may die
+Warning      10.02.2022 22:56:20      Del2 The animal is completely hungry and may die
+Warning      10.02.2022 22:56:20      Del1 The animal is completely hungry and may die

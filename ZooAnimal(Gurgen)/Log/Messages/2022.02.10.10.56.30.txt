@@ -1,0 +1,3 @@
+Error     10.02.2022 22:56:30      The Lion2 is a Dead
+Error     10.02.2022 22:56:30      The Monk2 is a Dead
+Warning      10.02.2022 22:56:30      Del3 The animal is completely hungry and may die

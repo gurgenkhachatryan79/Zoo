@@ -1,0 +1,41 @@
+Error     10.02.2022 22:41:38      The Del1 is a Dead
+Warning      10.02.2022 22:41:38      Del2 The animal is completely hungry and may die
+Error     10.02.2022 22:41:38      The Del3 is a Dead
+Error     10.02.2022 22:41:38      The Eag1 is a Dead
+Error     10.02.2022 22:41:38      The Eag2 is a Dead
+Error     10.02.2022 22:41:38      The Eag3 is a Dead
+Error     10.02.2022 22:41:38      The Elep1 is a Dead
+Error     10.02.2022 22:41:38      The Lion1 is a Dead
+Error     10.02.2022 22:41:38      The Lion2 is a Dead
+Error     10.02.2022 22:41:38      The Monk1 is a Dead
+Error     10.02.2022 22:41:38      The Monk2 is a Dead
+Information       10.02.2022 22:41:38      Del2 goes to the door
+Error     10.02.2022 22:41:38      The Del3 is a Dead
+Error     10.02.2022 22:41:38      The Del1 is a Dead
+Information       10.02.2022 22:41:38      Del1 goes to the FoodPlate
+Information       10.02.2022 22:41:38      Del2 goes to the FoodPlate
+Error     10.02.2022 22:41:38      The Del3 is a Dead
+Information       10.02.2022 22:41:38      Del3 goes to the FoodPlate
+Information       10.02.2022 22:41:38      Fish it's my food Thank you,I will eat 
+Error     10.02.2022 22:41:38      The Del1 is a Dead
+Information       10.02.2022 22:41:38      Dolphin  to leave
+Information       10.02.2022 22:41:38      Dolphin  to leave
+Information       10.02.2022 22:41:38      Dolphin  to leave
+Error     10.02.2022 22:41:38      The Eag1 is a Dead
+Error     10.02.2022 22:41:38      The Eag2 is a Dead
+Error     10.02.2022 22:41:38      The Eag3 is a Dead
+Error     10.02.2022 22:41:38      The Eag1 is a Dead
+Error     10.02.2022 22:41:38      The Eag2 is a Dead
+Error     10.02.2022 22:41:38      The Eag3 is a Dead
+Error     10.02.2022 22:41:38      The Eag1 is a Dead
+Information       10.02.2022 22:41:38      Eag1 goes to the FoodPlate
+Error     10.02.2022 22:41:38      The Eag2 is a Dead
+Information       10.02.2022 22:41:38      Eag2 goes to the FoodPlate
+Error     10.02.2022 22:41:38      The Eag3 is a Dead
+Information       10.02.2022 22:41:38      Eag3 goes to the FoodPlate
+Information       10.02.2022 22:41:38      Meat it's my food Thank you,I will eat 
+Error     10.02.2022 22:41:38      The Eag1 is a Dead
+Information       10.02.2022 22:41:38      Eagle  to leave
+Error     10.02.2022 22:41:38      The Eag2 is a Dead
+Information       10.02.2022 22:41:38      Eagle  to leave
+Information       10.02.2022 22:41:38      Eagle  to leave

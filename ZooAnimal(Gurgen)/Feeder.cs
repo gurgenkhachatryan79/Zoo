@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Timers;
 using ZooAnimal_Gurgen_.Animals;
 using ZooAnimal_Gurgen_.Attributes;
@@ -46,11 +47,11 @@ namespace ZooAnimal_Gurgen_
             _animals = animals;
             _cages = cages;
 
-            _timerfeeding.Interval = 7000;
+            _timerfeeding.Interval = 8000;
             _timerfeeding.Elapsed += _timerfeeding_Elapsed;
             _timerfeeding.Start();
 
-            _timerprint.Interval = 3000;
+            _timerprint.Interval = 7000;
             _timerprint.Elapsed += _timerprint_Elapsed;
             _timerprint.Start();
         }
@@ -62,9 +63,10 @@ namespace ZooAnimal_Gurgen_
         {
             for (int i = 0; i < _cages.Count; i++)
             {
-                if (_cages[i].Id == animal.Id)
+                if (_cages[i] == animal.MyCage)
                 {
-                    _cages[i].animallist.Add(animal); _cages[i].IsEmpty = false;
+                    _cages[i].animallist.Add(animal);
+                    _cages[i].IsEmpty = false;
                 }
             }
         }
@@ -87,9 +89,9 @@ namespace ZooAnimal_Gurgen_
 
         private void _timerprint_Elapsed(object sender, ElapsedEventArgs e)
         {
-            for (int i = 0; i < 2; i++)
+            foreach (var item in _cages)
             {
-                new ShowInfoAnimal().PrintAnimal(_cages[i].animallist[0]);
+                new ShowInfoCage().PrintCage(item);
             }
         }
 
@@ -100,11 +102,27 @@ namespace ZooAnimal_Gurgen_
             Console.ResetColor();
             EventLeaveTheCage += TurnOnLight;
             EventLeaveTheCage += OpenTheDoor;
+            EventLeaveTheCage += DeadClean;
+
             FeederEventArgs e = new FeederEventArgs();
             e.cage = cage;
             if (EventLeaveTheCage != null)
             {
                 EventLeaveTheCage(this, e);
+            }
+        }
+
+        public void DeadClean(object sender,FeederEventArgs e)
+        {
+                var query =
+                from animal in e.cage.animallist
+                where animal.IsLive == false
+                select animal.Id;
+            foreach (var item in query)
+            {
+                 Reservoir.RemoveAnimal(e.cage, item);
+                 Console.WriteLine(item+" ");
+                 break;
             }
         }
 

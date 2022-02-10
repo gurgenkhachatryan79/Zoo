@@ -8,6 +8,7 @@ namespace ZooAnimal_Gurgen_
         static void Main(string[] args)
         {
             new Reservoir().CreateCages();
+            
             string input;
             do
             {

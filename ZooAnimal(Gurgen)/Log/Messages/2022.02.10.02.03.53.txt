@@ -1,4 +1,0 @@
-Error     10.02.2022 2:03:53      The Del1 is a Dead
-Warning      10.02.2022 2:03:53      Eag3 The animal is completely hungry and may die
-Error     10.02.2022 2:03:53      The Lion2 is a Dead
-Error     10.02.2022 2:03:53      The Monk1 is a Dead

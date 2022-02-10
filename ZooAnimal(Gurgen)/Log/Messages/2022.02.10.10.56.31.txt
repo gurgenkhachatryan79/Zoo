@@ -1,0 +1,31 @@
+Error     10.02.2022 22:56:31      The Monk1 is a Dead
+Information       10.02.2022 22:56:31      Del1 goes to the door
+Information       10.02.2022 22:56:31      Del2 goes to the door
+Error     10.02.2022 22:56:31      The Del3 is a Dead
+Information       10.02.2022 22:56:31      Del1 goes to the door
+Information       10.02.2022 22:56:31      Del2 goes to the door
+Error     10.02.2022 22:56:31      The Del3 is a Dead
+Information       10.02.2022 22:56:31      Del1 goes to the door
+Information       10.02.2022 22:56:31      Del2 goes to the door
+Error     10.02.2022 22:56:31      The Del3 is a Dead
+Information       10.02.2022 22:56:31      Del1 goes to the FoodPlate
+Information       10.02.2022 22:56:31      Del2 goes to the FoodPlate
+Error     10.02.2022 22:56:31      The Del3 is a Dead
+Information       10.02.2022 22:56:31      Del3 goes to the FoodPlate
+Information       10.02.2022 22:56:31      Fish it's my food Thank you,I will eat 
+Information       10.02.2022 22:56:31      Dolphin  to leave
+Information       10.02.2022 22:56:31      Dolphin  to leave
+Information       10.02.2022 22:56:31      Dolphin  to leave
+Information       10.02.2022 22:56:31      Eag3 goes to the door
+Information       10.02.2022 22:56:31      Eag3 goes to the door
+Information       10.02.2022 22:56:31      Eag3 goes to the door
+Information       10.02.2022 22:56:31      Eag3 goes to the door
+Information       10.02.2022 22:56:31      Eag3 goes to the FoodPlate
+Information       10.02.2022 22:56:31      Meat it's my food Thank you,I will eat 
+Information       10.02.2022 22:56:31      Eagle  to leave
+Error     10.02.2022 22:56:31      The Lion2 is a Dead
+Error     10.02.2022 22:56:31      The Lion1 is a Dead
+Error     10.02.2022 22:56:31      The Elep1 is a Dead
+Error     10.02.2022 22:56:31      The Eag2 is a Dead
+Error     10.02.2022 22:56:31      The Eag1 is a Dead
+Warning      10.02.2022 22:56:31      Del3 The animal is completely hungry and may die

@@ -1,0 +1,9 @@
+Warning      10.02.2022 22:41:34      Monk1 The animal is completely hungry and may die
+Warning      10.02.2022 22:41:34      Lion1 The animal is completely hungry and may die
+Warning      10.02.2022 22:41:34      Elep1 The animal is completely hungry and may die
+Warning      10.02.2022 22:41:34      Eag3 The animal is completely hungry and may die
+Warning      10.02.2022 22:41:34      Eag2 The animal is completely hungry and may die
+Warning      10.02.2022 22:41:34      Eag1 The animal is completely hungry and may die
+Warning      10.02.2022 22:41:34      Del3 The animal is completely hungry and may die
+Warning      10.02.2022 22:41:34      Del2 The animal is completely hungry and may die
+Warning      10.02.2022 22:41:34      Del1 The animal is completely hungry and may die

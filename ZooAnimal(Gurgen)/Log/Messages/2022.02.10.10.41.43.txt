@@ -1,0 +1,4 @@
+Error     10.02.2022 22:41:43      The Monk1 is a Dead
+Warning      10.02.2022 22:41:43      Eag3 The animal is completely hungry and may die
+Warning      10.02.2022 22:41:43      Del3 The animal is completely hungry and may die
+Error     10.02.2022 22:41:43      The Del1 is a Dead

@@ -1,0 +1,3 @@
+Error     10.02.2022 22:41:41      The Monk1 is a Dead
+Error     10.02.2022 22:41:41      The Eag2 is a Dead
+Error     10.02.2022 22:41:41      The Del1 is a Dead

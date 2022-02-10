@@ -8,27 +8,27 @@ using ZooAnimal_Gurgen_.Attributes;
 
 namespace ZooAnimal_Gurgen_.Animals
 {
-    [Validation(0,Id =0)]
+    [Validation(0, Id = 0)]
     class Animal
     {
-      //  protected int id;
+        //  protected int id;
         protected string name;
         private Timer _timerhungry { get; set; } = new Timer();
         protected DateTime birthday;
         protected int maxStomachSize;
-      /*  public int Id
-        {
-            set
-            {
-                if (value < 1)
-                    //{ throw new ArgumentException(paramName: nameof(value), message: "Id cannot be <1"); }
-                    Console.WriteLine("Id cannot be <1");
-                else
-                { id = value; }
-            }
+        /*  public int Id
+          {
+              set
+              {
+                  if (value < 1)
+                      //{ throw new ArgumentException(paramName: nameof(value), message: "Id cannot be <1"); }
+                      Console.WriteLine("Id cannot be <1");
+                  else
+                  { id = value; }
+              }
 
-            get { return id; }
-        }*/
+              get { return id; }
+          }*/
         public int Id { get; set; }
         public string Name
         {
@@ -77,7 +77,6 @@ namespace ZooAnimal_Gurgen_.Animals
         }
         public Cage MyCage { set; get; }
 
-        //public delegate void Deleg(Cage cage);
         public event EventHandler<AnimalEventArgs> EatEvent;
 
         public Animal() { }
@@ -88,7 +87,7 @@ namespace ZooAnimal_Gurgen_.Animals
                 Id = id;
             }
             else { Id = 0; }
-           
+
             Name = name;
             _Gender = gender;
             Birthday = birthday;
@@ -97,7 +96,7 @@ namespace ZooAnimal_Gurgen_.Animals
             StomachSize = 0;
             RedBorderOfDeath = 0;
             IsLive = true;
-            logger =  Logger.CreateLogObject();
+            logger = Logger.CreateLogObject();
             MyCage = cage;
 
             _timerhungry.Interval = 1000;
@@ -133,7 +132,7 @@ namespace ZooAnimal_Gurgen_.Animals
             foreach (var item in cage.animallist[0].Foods)
             {
                 //Console.WriteLine(item.GetType().Name);
-               new Logger().LogInformation(item.GetType().Name);
+                new Logger().LogInformation(item.GetType().Name);
             }
             Console.WriteLine(new string('-', 30));
         }
@@ -147,23 +146,23 @@ namespace ZooAnimal_Gurgen_.Animals
             e.cage = cage;
             if (EatEvent != null)
             {
-                EatEvent(this,e);
-            }          
+                EatEvent(this, e);
+            }
         }
 
-        public void AnimalGoesToTheDoor(object sender,FeederEventArgs e)
+        public void AnimalGoesToTheDoor(object sender, FeederEventArgs e)
         {
             foreach (var item in e.cage.animallist)
             {
                 if (item.Died() != AnimalStatus.IsDied && e.cage.animallist != null)
                 {
                     Console.WriteLine(item.Name + " goes to the door");
-                   new Logger().LogInformation(item.Name + " goes to the door");
+                    new Logger().LogInformation(item.Name + " goes to the door");
                 }
             }
         }
 
-        public void AnimalGoesToTheFoodPlate(object sender,AnimalEventArgs e)
+        public void AnimalGoesToTheFoodPlate(object sender, AnimalEventArgs e)
         {
             foreach (var item in e.cage.animallist)
             {
@@ -173,17 +172,17 @@ namespace ZooAnimal_Gurgen_.Animals
             }
         }
 
-        public void AnimalToLeave(object sender,AnimalEventArgs e)
+        public void AnimalToLeave(object sender, AnimalEventArgs e)
         {
             foreach (var item in e.cage.animallist)
             {
                 if (item.Died() != AnimalStatus.IsDied && e.cage.animallist != null)
                 { Console.WriteLine(item.GetType().Name + "  to leave"); }
-               new Logger().LogInformation(item.GetType().Name + "  to leave");
+                new Logger().LogInformation(item.GetType().Name + "  to leave");
             }
         }
 
-        public virtual void CanEat(object sender,AnimalEventArgs e)
+        public virtual void CanEat(object sender, AnimalEventArgs e)
         {
             if (AnimalEatFoodOrNot(e.cage, e.cage._FoodPlate.Foods) == AnimalStatus.DidnotEat)
             {
@@ -191,7 +190,7 @@ namespace ZooAnimal_Gurgen_.Animals
                 else
                 {
                     Console.WriteLine(GetType().Name + "   This is not my food ,I do not eat it, I like to eat");
-                   new Logger().LogWarning("This is not my food ,I do not eat it, I like to eat");
+                    new Logger().LogWarning("This is not my food ,I do not eat it, I like to eat");
                     MyLikeFoods(e.cage);
                 }
             }

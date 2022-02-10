@@ -1,0 +1,48 @@
+Error     10.02.2022 22:42:17      The Lion2 is a Dead
+Error     10.02.2022 22:42:17      The Eag1 is a Dead
+Error     10.02.2022 22:42:17      The Del1 is a Dead
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the door
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del2 goes to the FoodPlate
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Del3 goes to the FoodPlate
+Information       10.02.2022 22:42:17      Fish it's my food Thank you,I will eat 
+Information       10.02.2022 22:42:17      Dolphin  to leave
+Error     10.02.2022 22:42:17      The Del3 is a Dead
+Information       10.02.2022 22:42:17      Dolphin  to leave
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the door
+Information       10.02.2022 22:42:17      Eag3 goes to the FoodPlate
+Information       10.02.2022 22:42:17      Meat it's my food Thank you,I will eat 
+Information       10.02.2022 22:42:17      Eagle  to leave
